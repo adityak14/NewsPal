@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<title>NewsPal</title>
+</head>
+<body style="background-color: rgb(247, 115, 82)">
+       
+	<div class="container" style="justify-items: center">
+        <div class="card" style="width: 1200px">
+        <center>
+		<div class="row">
+			<div class="col">
+				<div class="" >
+                    <center>
+					<h1 class="display-4 font-weight-bold">NewsPal</h1>
+                    <p class=" text-uppercase">Headlines, Currency &amp; Weather</p>	
+                    </center>
+				</div>
+			</div>
+		</div>
+        
+		<p></p>
+
+		<div class="row">
+			<div class="col">
+				<div class="card" style="height: 300px; width: 580px">
+					<div class="card-body">
+						<h2>Current Weather</h2>
+						<!-- <form class=""> -->
+							<!-- <div class="form-group mx-sm-2 mb-2">
+								<input class="form-control form-control-sm" type="text" id="code" name="city" placeholder="Search the city">
+                                                        </div>
+                            
+							<button type="submit" id="gettemp" value="Submit" class="btn btn-sm mb-2 btn-primary" onclick="loadDoc"></button> -->
+						<!-- </form> -->
+                                                <!-- <input class="form-control form-control-sm" type="text" id="code" name="code">
+                                                <br>
+                                                <button id="gettemp" type="button" onclick="loadDoc()" class="btn btn-sm mb-2 btn-primary" value="Get temperature"></button>
+
+						 -->
+                        <input type="text" id="textid" class="form-control form-control-sm" placeholder="Enter City"/>
+                        <br>
+                        <button onclick="getWeather()" class="btn btn-sm mb-2 btn-primary">Search Weather</button>
+                    
+                        <div id="parent">
+                          <!-- <div
+                            style="
+                              display: none;
+                              height: 50px;
+                              background: white;
+                              color: black;
+                              justify-content: center;
+                              align-items: center;
+                              margin-top: 1px;
+                            "
+                          >
+  
+                          </div> -->
+                          <strong id="city" class="text-capitalize"></strong><br>
+                          <div>
+                          <strong id="temp" class="text-capitalize" style="font-size: 50px"></strong>
+                            </div>
+                        </div>
+                                                
+                                                        
+                                                <!-- <p id="demo">Enter City Name: <input type="text" id="code" name="code"></p>
+                                                <button id="gettemp" type="button" onclick="loadDoc()">Get temperature</button> -->
+                                                <!-- <strong>City: </strong>, <strong></strong> <br>
+                                                <span class="text-capitalize" style="font-size: 30px"><br> <span class="font-weight-bold" style="font-size: 50px; font-family: sans-serif"> <sup>o</sup> C </span> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="col">
+				<div class="card" style="height: 300px; width: 580px">
+					<div class="card-body">
+						<h2>Currency Conversion Rate</h2>
+						<form class="">
+							<div class="form-group mx-sm-2 mb-2">
+								From: <select name="currency_from" class="form-control form-control-sm">
+                                        {% for currency in currencies %}
+                                        <option value="{{currency}}">{{currency}}</option>
+                                        {% endfor %}
+                                       </select>
+                            </div>
+                            
+				    		<div class="form-group mx-sm-2 mb-2">
+				    			To:<select name="currency_to" class="form-control form-control-sm">
+                                        {% for currency in currencies %}
+                                        <option value="{{currency}}">{{currency}}</option>
+                                        {% endfor %}
+                                    </select>
+				    		</div>
+				     		
+				         	<input class="btn btn-primary btn-sm mb-2" type="submit" value="Submit">
+                        </form>
+                      
+                        
+
+						<p><span class="font-weight-bold"> 1 </span> <span class="font-italic"> {{currency_from}}</span> = <span class="font-weight-bold"> {{ rate }} </span> <span class="font-italic"> {{currency_to}} </span> </p>
+					</div>
+				</div>
+			</div>	
+		</div>
+        <br>
+        
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-body">
+						<h1>News Headlines</h1>
+						<!-- <form class="form-inline">
+							<div class="form-group mx-sm-2 mb-2">
+								<input class="form-control form-control-sm" type="text" name="publication" placeholder="Enter the channel">
+							</div>
+							<input class="btn btn-primary btn-sm mb-2" type="submit" value="Submit">
+                        </form> -->
+                
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                                <!-- <button type="submit" class="btn btn-secondary" > -->
+                                        <a href='http://localhost:5000/?publication=recent' class="btn btn-dark">Recent Stories</a>
+                                        <a href='http://localhost:5000/?publication=economy' class="btn btn-dark">Economy</a>
+                                <!-- </button> -->
+                                <!-- <button type="button" class="btn btn-secondary"> -->
+                                        <a href='http://localhost:5000/?publication=politics' class="btn btn-dark">Politics and Nation</a>
+                                    <!-- </button> -->
+                                <!-- <button type="button" class="btn btn-secondary"> -->
+                                        <a href='http://localhost:5000/?publication=science' class="btn btn-dark">Science</a>
+                                <!-- </button> -->
+                                <!-- <button type="button" class="btn btn-secondary"> -->
+                                        <a href='http://localhost:5000/?publication=stock' class="btn btn-dark">Stocks</a>
+                                <!-- </button> -->
+                                <!-- <button type="button" class="btn btn-secondary"> -->
+                                    <a href='http://localhost:5000/?publication=sports' class="btn btn-dark">Sports</a>
+                                <!-- </button> -->
+                                <!-- <button type="button" class="btn btn-secondary"> -->
+                                        <a href='http://localhost:5000/?publication=bond' class="btn btn-dark">Bonds</a>
+                                <!-- </button> -->
+                                <!-- <button type="button" class="btn btn-secondary"> -->
+                                        <a href='http://localhost:5000/?publication=auto' class="btn btn-dark">Auto</a>
+                                <!-- </button> -->
+                                <!-- <button type="button" class="btn btn-secondary"> -->
+                                        <a href='http://localhost:5000/?publication=cricket' class="btn btn-dark" >Cricket</a>
+                                <!-- </button> -->
+                                <!-- <button type="button" class="btn btn-secondary"> -->
+                                        <a href='http://localhost:5000/?publication=banking' class="btn btn-dark">Banking/Finance</a>
+                                        <!-- <a href='http://localhost:5000/?publication=bcc' class="btn btn-dark">BCC</a> -->
+                                <!-- </button> -->
+                        </div>
+                        
+                        
+                        
+                     
+                        
+                      
+                        
+                        
+							<p></p>
+                            <!-- {% for article in articles %}
+                            <b> <a href="{{ article.link }}">{{ article.title }}</a></b>
+                            <br />
+                            <i> {{ article.published }} </i>
+                            <br />
+                            <p> {{ article.summary }} </p>
+                            <hr/>
+                            {% endfor %} -->
+                            {% for article in articles %}
+                            <b><a href={{article.link}}>{{article.title}}</a></b><br />
+                            <i>{{article.published}}</i><br />
+                            <!-- <p>{{article.summary}}</p> -->
+                            <hr />
+                            {% endfor %}
+                            
+					    </div>
+					</div>
+			    </div>
+            </div>
+        </center>
+        </div>
+	</div>
+	
+        <!-- <script type="text/javascript">
+        $(document).ready(function(){
+                $("weather").click(function(){
+            
+                    var city = $("city").val();
+            
+                    if (city != '') {
+                        $.ajax({
+                            url: "api.openweathermap.org/data/2.5/weather?&appid=7023923dd26a725da995c75b65864de5&q="+city ,
+                            type: "GET",
+                            dataType: "jsonp",
+                            success: function(data){
+                                console.log(data);
+                            }
+                        });
+                    } else {
+                        $("#error").html('')
+                    }
+                });
+            });
+        </script> -->
+
+           <!-- <script>
+ function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      var x=document.getElementById("code").value;
+        xhttp.onreadystatechange = function() {
+        	// if statement to check whether we got the response or not. If Weather API responds then it will go into if block otherwise not.
+    if (this.readyState == 4 && this.status == 200) {
+      var str = this.responseText;
+
+      // Converting the string into JSON format
+      var obj = JSON.parse(str);
+
+      // Temperature of the city is to be written in place of the paragraph with id="demo"
+      document.getElementById("demo").innerHTML= "The temperature of " + obj["name"] + " in Degree Celsius is: " + obj["main"]["temp"]-273.15;
+
+      //Making the button invisible after click
+      document.getElementById("gettemp").style.display="none";
+    }
+  };
+      xhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?q="+ x + "&appid=7023923dd26a725da995c75b65864de5", true);
+      xhttp.send();
+
+    }
+    </script> -->
+
+    <script>
+        let getWeather = () => {
+  // CITY NAME IS HARD CODED
+
+  let cityName = document.querySelector("#textid").value || "";
+
+  /*let url =
+    "https://api.openweathermap.org/data/2.5/weather?appid=7023923dd26a725da995c75b65864de5&units=metric&q=pune";*/
+
+  let url =
+    "https://api.openweathermap.org/data/2.5/weather?appid=7023923dd26a725da995c75b65864de5&units=metric&q=" +
+    cityName;
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  
+  xhr.onload = () => {
+    const refjson = JSON.parse(xhr.responseText);
+    console.log(refjson);
+    domOperationHere(refjson);
+  };
+
+  xhr.send();
+};
+
+let domOperationHere = (refjson) => {
+  console.log(refjson.main);
+  const name = refjson.name;
+  const maxTemp = refjson.main.temp_max;
+  const minTemp = refjson.main.temp_min;
+  const temp = refjson.main.temp;
+//   $(".parent").remove();
+//   $(".temp").remove();
+  const parent = document.querySelector("#parent");
+ 
+  const newElement = parent.children[0].cloneNode(true);
+//   newElement.style.display = "flex";
+  newElement.innerHTML = "City:" + " " + name;
+  parent.insertBefore(newElement, parent.firstChild);
+  
+  const newElement1 = parent.children[1].cloneNode(true);
+//   newElement.style.display = "flex";
+  newElement1.innerHTML = temp +'&#8451';
+  parent.insertBefore(newElement1, parent.secondChild);
+
+  document.querySelector("#textid").value = "";
+};
+    </script>
+</body>
+</html>
+
+
+<!-- https://github.com/bilalaziz786/Weather-App/blob/master/AJAX/ajax.html -->
+
+<!-- https://github.com/dac-2020/awebp/blob/master/day13/1.html -->
